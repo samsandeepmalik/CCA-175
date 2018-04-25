@@ -1,0 +1,21 @@
+  sqoop eval \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --query "select * from order_items limit 10"
+  
+  sqoop list-tables \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp
+  
+  sqoop eval \
+  --connect "jdbc:mysql://ip-172-31-13-154/information_schema" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --query "show tables"
+  
+  sqoop list-databases \
+  --connect "jdbc:mysql://ip-172-31-13-154" \
+  --username sqoopuser \
+  --password NHkkP876rp
