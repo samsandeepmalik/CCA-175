@@ -1,4 +1,4 @@
-  sqoop eval \
+sqoop eval \
   --connect "jdbc:mysql://ip-172-31-13-154/retail_db" \
   --username sqoopuser \
   --password NHkkP876rp \
@@ -10,7 +10,7 @@
   --password NHkkP876rp
   
   sqoop eval \
-  --connect "jdbc:mysql://ip-172-31-13-154/information_schema" \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
   --username sqoopuser \
   --password NHkkP876rp \
   --query "show tables"
@@ -19,3 +19,57 @@
   --connect "jdbc:mysql://ip-172-31-13-154" \
   --username sqoopuser \
   --password NHkkP876rp
+  
+  sqoop import-all-tables \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --exclude-tables daily_revenue,daily_revenue_demo,employee,employee1,employee_table,order_test,products_external,products_replica,products_replica_export,results,student \
+  --warehouse-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/import-all-tables
+  
+  sqoop import \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --table categories \
+  --target-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/categories
+  
+  sqoop import-table \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --table departments \
+  --target-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/departments
+  
+  sqoop import-table \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --table products \
+  --target-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/products
+  
+  sqoop import-table \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --table customers \
+  --target-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/customers
+  
+  sqoop import-table \
+  --connect "jdbc:mysql://ip-172-31-13-154/retail_db_13072017" \
+  --username sqoopuser \
+  --password NHkkP876rp \
+  --as-avrodatafile \
+  --table order_items \
+  --target-dir /apps/hive/warehouse/sandeep_cca175.db \
+  --outdir /sqoop/CCA-175/order_items
